@@ -19,9 +19,9 @@ RUN apk --update add --no-cache \
       ttf-liberation
 
 # support chinese language
-RUN apk add wqy-zenhei \
+RUN apk add font-wqy-zenhei \
     --update-cache \
-    --repository http://nl.alpinelinux.org/alpine/edge/testing \
+    --repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
     --allow-untrusted
 
 # support emoji
