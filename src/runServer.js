@@ -3,6 +3,7 @@ const puppeteer = require("puppeteer-core");
 
 const takeScreenshot = require("./takeScreenshot.js");
 const config = require("./config.js");
+const basicAuth = require("./basicAuth.js");
 
 async function runServer() {
   const base = `${config.server.protocol}://${config.server.host}:${config.server.port}`;
@@ -17,6 +18,11 @@ async function runServer() {
   });
 
   const server = http.createServer((req, res) => {
+    // Check Basic Auth
+    if (!basicAuth(req, res)) {
+      return;
+    }
+
     const url = new URL(req.url, base);
 
     if (url.pathname === "/api/cook" && req.method === "POST") {

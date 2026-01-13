@@ -11,6 +11,11 @@ const config = {
     imageQuerySelector:
       env.CARBON_IMG_SELECTOR || "#export-container  .container-bg",
   },
+  auth: {
+    enabled: env.AUTH_ENABLED === "true" || false,
+    username: env.AUTH_USERNAME || "admin",
+    password: env.AUTH_PASSWORD || "password",
+  },
 };
 
 module.exports = config;
